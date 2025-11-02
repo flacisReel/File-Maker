@@ -1,0 +1,73 @@
+// Made with ❤️ by Flacis
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Web;
+// use system.io for file stuff
+
+namespace txt_saver_maker
+{
+    internal class Program
+    {
+        static async Task Main(string[] args)
+        {
+            while (true)
+            {
+                // Made with ❤️ by Flacis
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Clear();
+                Console.WriteLine("\n  /$$$$$$  /$$ /$$                                                                  \r\n /$$__  $$|__/| $$                                                                  \r\n| $$  \\__/ /$$| $$  /$$$$$$         /$$$$$$$  /$$$$$$  /$$    /$$ /$$$$$$   /$$$$$$ \r\n| $$$$    | $$| $$ /$$__  $$       /$$_____/ |____  $$|  $$  /$$//$$__  $$ /$$__  $$\r\n| $$_/    | $$| $$| $$$$$$$$      |  $$$$$$   /$$$$$$$ \\  $$/$$/| $$$$$$$$| $$  \\__/\r\n| $$      | $$| $$| $$_____/       \\____  $$ /$$__  $$  \\  $$$/ | $$_____/| $$      \r\n| $$      | $$| $$|  $$$$$$$       /$$$$$$$/|  $$$$$$$   \\  $/  |  $$$$$$$| $$      \r\n|__/      |__/|__/ \\_______/      |_______/  \\_______/    \\_/    \\_______/|__/      \r\n                                                                                    \r\n                                                                                    \r\n                                                                                    ");
+                Console.WriteLine("\n--------------------------------------------------------\n  FILE MAKER/SAVER -  Made by Flacis\n--------------------------------------------------------");
+
+                Console.Write("Enter the file name -> ");
+                string file_name = Console.ReadLine();
+
+                Console.Write("Enter what you want the file extension to be (.bat, .txt, .exe, ect.) (include .) -> ");
+                string file_extension = Console.ReadLine();
+
+                Console.Write("Enter where you want this file to be saved -> ");
+                string file_path = Console.ReadLine();
+
+                Console.Write($"Enter the code/content you want inside the file {file_name + file_extension} -> ");
+                string file_content = Console.ReadLine();
+
+                string file_wholeName = file_name + file_extension;
+
+                // combines everything into a full file
+                string full_file = Path.Combine(file_path, file_name + file_extension);
+
+                try
+                {
+                    File.WriteAllText(full_file, file_content);
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($"\n[ + ] SUCCESS {file_name + file_extension} SUCCESS [ + ]\n\n");
+                }
+
+                catch
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine($"Sorry, but the file {file_name + file_extension} has not been created.");
+                }
+
+                if (file_extension != ".bat" && file_extension != ".exe" && file_extension != ".txt")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sorry, but the file extension you tried was wrong. Please press any key to try again: ");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\nPress any key to create another file...");
+                Console.ReadKey();
+            }
+
+            // Made with ❤️ by Flacis
+        }
+    }
+}
